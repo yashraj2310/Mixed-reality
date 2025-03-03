@@ -22,7 +22,7 @@ The **Mixed Reality** website is a modern, informative platform that explores th
 ## 🚀 Getting Started
 ### 1️⃣ Clone the Repository
 ```sh
-git clone https://github.com/your-username/mixed-reality.git
+git clone https://github.com/yashraj2310/mixed-reality.git
 cd mixed-reality
 ```
 
