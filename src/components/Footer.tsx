@@ -332,7 +332,6 @@ const Footer: React.FC = () => {
           >
             &copy; 2025 MR Hub. All rights reserved. Built with ❤️ for the Mixed Reality community.
           </motion.p>
-        </div>
       </div>
     </motion.footer>
   );

@@ -222,7 +222,7 @@ const Header: React.FC<HeaderProps> = ({ mobileMenuOpen, setMobileMenuOpen }) =>
           </div>
         )}
       </AnimatePresence>
-    </header>
+    </motion.header>
   );
 };
 

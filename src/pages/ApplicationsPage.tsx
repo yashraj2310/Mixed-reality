@@ -218,11 +218,6 @@ const ApplicationsPage: React.FC = () => {
                 <motion.button
                   className="border-2 border-white text-white px-8 py-4 rounded-xl font-semibold hover:bg-white hover:text-indigo-600 transition-all duration-300"
                   whileHover={{ scale: 1.05, y: -2 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  Schedule Demo
-                </motion.button>
-              </div>
             </div>
           </div>
         </motion.div>
