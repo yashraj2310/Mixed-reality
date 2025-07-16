@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Cube, Zap, Eye, Cpu, Wifi, Headphones } from 'lucide-react';
+import { Cuboid as Cube, Zap, Eye, Cpu, Wifi, Headphones } from 'lucide-react';
 
 const FloatingElements: React.FC = () => {
   const elements = [
