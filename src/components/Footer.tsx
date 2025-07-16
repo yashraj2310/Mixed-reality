@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Laptop } from 'lucide-react';
+import { Laptop, Sparkles } from 'lucide-react';
+import { motion } from 'framer-motion';
 import { mrApplications } from '../App';
 
 const Footer: React.FC = () => {
@@ -63,89 +64,277 @@ const Footer: React.FC = () => {
   };
 
   return (
-    <footer id="contact" className="bg-gray-900" aria-labelledby="footer-heading">
+    <motion.footer 
+      id="contact" 
+      className="bg-gradient-to-br from-gray-900 via-indigo-900 to-purple-900 relative overflow-hidden" 
+      aria-labelledby="footer-heading"
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      transition={{ duration: 1 }}
+      viewport={{ once: true }}
+    >
+      {/* Background animation */}
+      <motion.div
+        className="absolute inset-0 bg-gradient-to-r from-blue-900/20 via-purple-900/20 to-pink-900/20"
+        animate={{
+          background: [
+            "linear-gradient(45deg, rgba(30, 58, 138, 0.2), rgba(88, 28, 135, 0.2), rgba(157, 23, 77, 0.2))",
+            "linear-gradient(135deg, rgba(157, 23, 77, 0.2), rgba(30, 58, 138, 0.2), rgba(88, 28, 135, 0.2))",
+            "linear-gradient(225deg, rgba(88, 28, 135, 0.2), rgba(157, 23, 77, 0.2), rgba(30, 58, 138, 0.2))",
+          ]
+        }}
+        transition={{ duration: 15, repeat: Infinity, repeatType: "reverse" }}
+      />
+      
       <h2 id="footer-heading" className="sr-only">
         Footer
       </h2>
-      <div className="mx-auto max-w-7xl px-6 pb-8 pt-16 sm:pt-24 lg:px-8 lg:pt-32">
+      <div className="relative mx-auto max-w-7xl px-6 pb-8 pt-16 sm:pt-24 lg:px-8 lg:pt-32">
         <div className="xl:grid xl:grid-cols-3 xl:gap-8">
-          <div className="space-y-8">
-            <div className="flex items-center">
-              <Laptop className="h-8 w-auto text-indigo-500" />
-              <span className="ml-2 text-xl font-bold text-white">MR Hub</span>
-            </div>
-            <p className="text-sm leading-6 text-gray-300">
+          <motion.div 
+            className="space-y-8"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+          >
+            <motion.div 
+              className="flex items-center group"
+              whileHover={{ scale: 1.05 }}
+            >
+              <motion.div
+                animate={{ rotate: [0, 360] }}
+                transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+              >
+                <Laptop className="h-8 w-auto text-indigo-400 group-hover:text-purple-400 transition-colors duration-300" />
+              </motion.div>
+              <span className="ml-2 text-xl font-bold text-white group-hover:text-indigo-300 transition-colors duration-300">
+                MR Hub
+              </span>
+              <motion.div
+                className="ml-2"
+                animate={{ 
+                  scale: [1, 1.2, 1],
+                  opacity: [0.5, 1, 0.5],
+                }}
+                transition={{ duration: 2, repeat: Infinity }}
+              >
+                <Sparkles className="h-4 w-4 text-yellow-400" />
+              </motion.div>
+            </motion.div>
+            <motion.p 
+              className="text-sm leading-6 text-gray-300"
+              initial={{ opacity: 0.8 }}
+              whileHover={{ opacity: 1 }}
+            >
               Exploring the future of Mixed Reality technology and its applications across industries.
-            </p>
+            </motion.p>
             <div className="flex space-x-6">
               {navigation.social.map((item) => (
-                <a key={item.name} href={item.href} className="text-gray-400 hover:text-gray-300">
+                <motion.a 
+                  key={item.name} 
+                  href={item.href} 
+                  className="text-gray-400 hover:text-indigo-300 transition-colors duration-300"
+                  whileHover={{ scale: 1.2, y: -2 }}
+                  whileTap={{ scale: 0.9 }}
+                >
                   <span className="sr-only">{item.name}</span>
                   <item.icon className="h-6 w-6" aria-hidden="true" />
-                </a>
+                </motion.a>
               ))}
             </div>
-          </div>
-          <div className="mt-16 grid grid-cols-2 gap-8 xl:col-span-2 xl:mt-0">
+          </motion.div>
+          <motion.div 
+            className="mt-16 grid grid-cols-2 gap-8 xl:col-span-2 xl:mt-0"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            viewport={{ once: true }}
+          >
             <div className="md:grid md:grid-cols-2 md:gap-8">
-              <div>
-                <h3 className="text-sm font-semibold leading-6 text-white">Solutions</h3>
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.8, delay: 0.3 }}
+                viewport={{ once: true }}
+              >
+                <motion.h3 
+                  className="text-sm font-semibold leading-6 text-white mb-6"
+                  whileHover={{ x: 5, color: "#a5b4fc" }}
+                >
+                  Solutions
+                </motion.h3>
                 <ul role="list" className="mt-6 space-y-4">
-                  {navigation.solutions.map((item) => (
-                    <li key={item.name}>
-                      <Link to={item.href} className="text-sm leading-6 text-gray-300 hover:text-white">
-                        {item.name}
+                  {navigation.solutions.map((item, index) => (
+                    <motion.li 
+                      key={item.name}
+                      initial={{ opacity: 0, x: -10 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      transition={{ duration: 0.5, delay: 0.4 + index * 0.1 }}
+                      viewport={{ once: true }}
+                    >
+                      <Link 
+                        to={item.href} 
+                        className="text-sm leading-6 text-gray-300 hover:text-indigo-300 transition-colors duration-300 flex items-center group"
+                      >
+                        <motion.div
+                          className="w-1 h-1 bg-indigo-400 rounded-full mr-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                          whileHover={{ scale: 1.5 }}
+                        />
+                        <motion.span
+                          whileHover={{ x: 5 }}
+                          transition={{ duration: 0.2 }}
+                        >
+                          {item.name}
+                        </motion.span>
                       </Link>
-                    </li>
+                    </motion.li>
                   ))}
                 </ul>
-              </div>
-              <div className="mt-10 md:mt-0">
-                <h3 className="text-sm font-semibold leading-6 text-white">Support</h3>
+              </motion.div>
+              <motion.div 
+                className="mt-10 md:mt-0"
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.8, delay: 0.4 }}
+                viewport={{ once: true }}
+              >
+                <motion.h3 
+                  className="text-sm font-semibold leading-6 text-white mb-6"
+                  whileHover={{ x: 5, color: "#a5b4fc" }}
+                >
+                  Support
+                </motion.h3>
                 <ul role="list" className="mt-6 space-y-4">
-                  {navigation.support.map((item) => (
-                    <li key={item.name}>
-                      <Link to={item.href} className="text-sm leading-6 text-gray-300 hover:text-white">
-                        {item.name}
+                  {navigation.support.map((item, index) => (
+                    <motion.li 
+                      key={item.name}
+                      initial={{ opacity: 0, x: -10 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      transition={{ duration: 0.5, delay: 0.5 + index * 0.1 }}
+                      viewport={{ once: true }}
+                    >
+                      <Link 
+                        to={item.href} 
+                        className="text-sm leading-6 text-gray-300 hover:text-indigo-300 transition-colors duration-300 flex items-center group"
+                      >
+                        <motion.div
+                          className="w-1 h-1 bg-indigo-400 rounded-full mr-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                          whileHover={{ scale: 1.5 }}
+                        />
+                        <motion.span
+                          whileHover={{ x: 5 }}
+                          transition={{ duration: 0.2 }}
+                        >
+                          {item.name}
+                        </motion.span>
                       </Link>
-                    </li>
+                    </motion.li>
                   ))}
                 </ul>
-              </div>
+              </motion.div>
             </div>
             <div className="md:grid md:grid-cols-2 md:gap-8">
-              <div>
-                <h3 className="text-sm font-semibold leading-6 text-white">Company</h3>
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.8, delay: 0.5 }}
+                viewport={{ once: true }}
+              >
+                <motion.h3 
+                  className="text-sm font-semibold leading-6 text-white mb-6"
+                  whileHover={{ x: 5, color: "#a5b4fc" }}
+                >
+                  Company
+                </motion.h3>
                 <ul role="list" className="mt-6 space-y-4">
-                  {navigation.company.map((item) => (
-                    <li key={item.name}>
-                      <Link to={item.href} className="text-sm leading-6 text-gray-300 hover:text-white">
-                        {item.name}
+                  {navigation.company.map((item, index) => (
+                    <motion.li 
+                      key={item.name}
+                      initial={{ opacity: 0, x: -10 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      transition={{ duration: 0.5, delay: 0.6 + index * 0.1 }}
+                      viewport={{ once: true }}
+                    >
+                      <Link 
+                        to={item.href} 
+                        className="text-sm leading-6 text-gray-300 hover:text-indigo-300 transition-colors duration-300 flex items-center group"
+                      >
+                        <motion.div
+                          className="w-1 h-1 bg-indigo-400 rounded-full mr-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                          whileHover={{ scale: 1.5 }}
+                        />
+                        <motion.span
+                          whileHover={{ x: 5 }}
+                          transition={{ duration: 0.2 }}
+                        >
+                          {item.name}
+                        </motion.span>
                       </Link>
-                    </li>
+                    </motion.li>
                   ))}
                 </ul>
-              </div>
-              <div className="mt-10 md:mt-0">
-                <h3 className="text-sm font-semibold leading-6 text-white">Legal</h3>
+              </motion.div>
+              <motion.div 
+                className="mt-10 md:mt-0"
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.8, delay: 0.6 }}
+                viewport={{ once: true }}
+              >
+                <motion.h3 
+                  className="text-sm font-semibold leading-6 text-white mb-6"
+                  whileHover={{ x: 5, color: "#a5b4fc" }}
+                >
+                  Legal
+                </motion.h3>
                 <ul role="list" className="mt-6 space-y-4">
-                  {navigation.legal.map((item) => (
-                    <li key={item.name}>
-                      <Link to={item.href} className="text-sm leading-6 text-gray-300 hover:text-white">
+                  {navigation.legal.map((item, index) => (
+                    <motion.li 
+                      key={item.name}
+                      initial={{ opacity: 0, x: -10 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      transition={{ duration: 0.5, delay: 0.7 + index * 0.1 }}
+                      viewport={{ once: true }}
+                    >
+                      <Link 
+                        to={item.href} 
+                        className="text-sm leading-6 text-gray-300 hover:text-indigo-300 transition-colors duration-300 flex items-center group"
+                      >
+                        <motion.div
+                          className="w-1 h-1 bg-indigo-400 rounded-full mr-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                          whileHover={{ scale: 1.5 }}
+                        />
+                        <motion.span
+                          whileHover={{ x: 5 }}
+                          transition={{ duration: 0.2 }}
+                        >
                         {item.name}
+                        </motion.span>
                       </Link>
-                    </li>
+                    </motion.li>
                   ))}
                 </ul>
-              </div>
+              </motion.div>
             </div>
-          </div>
+          </motion.div>
         </div>
-        <div className="mt-16 border-t border-white/10 pt-8 sm:mt-20 lg:mt-24">
-          <p className="text-xs leading-5 text-gray-400">&copy; 2025 MR Hub. All rights reserved.</p>
+        <motion.div 
+          className="mt-16 border-t border-white/10 pt-8 sm:mt-20 lg:mt-24"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.8 }}
+          viewport={{ once: true }}
+        >
+          <motion.p 
+            className="text-xs leading-5 text-gray-400 text-center"
+            whileHover={{ color: "#a5b4fc" }}
+          >
+            &copy; 2025 MR Hub. All rights reserved. Built with ❤️ for the Mixed Reality community.
+          </motion.p>
         </div>
       </div>
-    </footer>
+    </motion.footer>
   );
 };
 
