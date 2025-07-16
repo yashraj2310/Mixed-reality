@@ -232,28 +232,3 @@ const ApplicationsPage: React.FC = () => {
 };
 
 export default ApplicationsPage;
-
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="mt-4 flex justify-between">
-                <div>
-                  <h3 className="text-lg font-bold text-gray-900">
-                    <Link to={app.path}>
-                      <span aria-hidden="true" className="absolute inset-0" />
-                      {app.title}
-                    </Link>
-                  </h3>
-                  <p className="mt-1 text-sm text-gray-500 line-clamp-2">{app.description}</p>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </div>
-  );
-};
-
-export default ApplicationsPage;
