@@ -233,29 +233,3 @@ const MRSection: React.FC<MRSectionProps> = ({ application }) => {
 };
 
 export default MRSection;
-
-              to={application.path}
-              className="inline-flex items-center text-sm font-semibold leading-6 text-indigo-600 hover:text-indigo-500"
-            >
-              Learn more about {application.title}
-              <ChevronRight className="ml-1 h-4 w-4" />
-            </Link>
-          </div>
-        </div>
-        <div className="relative h-64 lg:h-auto">
-          <img
-            src={application.image}
-            alt={application.title}
-            className="absolute inset-0 h-full w-full object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent lg:bg-gradient-to-r"></div>
-          <div className="absolute bottom-0 left-0 p-6 lg:hidden">
-            <h3 className="text-xl font-bold text-white">{application.title}</h3>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-};
-
-export default MRSection;
